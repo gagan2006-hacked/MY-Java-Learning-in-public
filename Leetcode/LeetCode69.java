@@ -1,19 +1,15 @@
-package com.company;
+package com.Leetcode;
 
-import java.util.Scanner;
-
-public class SquareRootUsingBin {
+public class LeetCode69 {
     public static void main(String[] args) {
-        Scanner in=new Scanner(System.in);
-        System.out.printf("%.2f",sqrtOfusr(in.nextInt()));
-//        System.out.println(6.324555206298829*6.324555206298829);
+        System.out.println(sqrtOfusr(9));
     }
     public static double sqrtOfusr(int n){
-        int start=0;
-        int end=n;
-        int m=-1;
+        long start=0;
+        long end=n;
+        long m=-1;
         while (start<=end){
-             m=(start+end)/2;
+            m=(start+end)/2;
             if (m*m==n){
                 return m;
             }
@@ -38,5 +34,4 @@ public class SquareRootUsingBin {
         return root;
 
     }
-
 }

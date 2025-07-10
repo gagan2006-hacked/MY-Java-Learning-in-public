@@ -1,16 +1,16 @@
 package com.company;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class MergeSortUser {
-    public static void main(String[] args) {
+    public static <ListNode> void main(String[] args) {
       int []arr=new int[4];
         for (int i = 0; i <arr.length ; i++) {
             arr[i]= arr.length-i;
         }
         mergesortOP(arr,0,arr.length-1);
         System.out.println(Arrays.toString(arr));
-
 
     }
 /*public static int [] mergesortOP(int []arr){
@@ -47,14 +47,14 @@ return merge(left,right);
         return arr;
     }
 */
-public static void  mergesortOP(int []nums,int start,int end){
+     public static void  mergesortOP(int []nums,int start,int end){
     if (start==end)return;
     int mid =(start+end)/2;
     mergesortOP(nums,start,mid);
     mergesortOP(nums,mid+1,end);
     merge(nums,start,mid,end);
 }
-static void merge(int []nums,int s,int m,int e) {
+    static void merge(int []nums,int s,int m,int e) {
     int []sortVer=new int[e-s +1];
     int i=s;int j=m+1; int k=0;
     while(i<=m && j<=e){

@@ -1,11 +1,13 @@
 package com.OOPs;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.Scanner;
 
 public class OopsPractice {
     public static void main(String[] args) {
-        Student []list=new Student[2];
-        Scanner in=new Scanner(System.in);
+        /*Student []list=new Student[2];
+        Scanner in=new Scanner(System.in);*/
        /* try {
             for (int i = 0; i < 2; i++) {
                 System.out.println("enter the data of student in this order (rollno name marks) please");
@@ -34,8 +36,13 @@ public class OopsPractice {
         BoxWeight boxWeight;
         boxWeight = new BoxOfUser();
 */
-        BoxOfUser boxPrice=new BoxPrice();
-        boxPrice.ga();
+        /*BoxOfUser boxPrice=new BoxPrice();
+        boxPrice.ga();*/
+       try {
+           FileReader file = new FileReader("Road_map-for-hacking");
+       } catch (FileNotFoundException e) {
+           System.out.println(e.getMessage());
+       }
     }
 }
 class Student {
