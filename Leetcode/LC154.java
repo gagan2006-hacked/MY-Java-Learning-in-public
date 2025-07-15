@@ -2,59 +2,61 @@ package com.Leetcode;
 
 public class LC154 {
     public static void main(String[] args) {
-        System.out.println(findMin(new int[]{1,1,1}));
+        System.out.println(findMin(new int[]{2,2,2,0,1}));
     }
     public static int findMin(int[] arr) {
-        int peak=findMinPeakInd(arr,0,arr.length-1,(arr.length-1)/2);
-        return arr[peak];
+        if (arr.length==1){
+            return arr[0];
+        }
+        int peak=findMinPeakInd(arr,0,arr.length-1);
+        if (peak== arr.length-1){
+            return arr[0];
+        } else {
+            return arr[peak+1];
+        }
     }
 
 
 
-    public static int findMinPeakInd(int[]arr,int s,int e,int mid ){
-        if (arr.length==1){
-            return 0;
-        } else if (arr.length==0) {
-            return -1;
-        }
-        if (arr.length==2){
-            int min=0;
-            for (int i = 1; i < arr.length; i++) {
-                if (arr[min]>arr[i]){
-                    min=i;
-                }
-            }
-            return min;
-        }
-        while (s<=e){
+    public static int findMinPeakInd(int[]arr,int s,int e){
+        int mid=(s+e)/2;
+        int n=arr.length-1;
+        while (s<e){
             mid=(s+e)/2;
-            if (mid==0&&(arr[mid]<arr[mid+1])&&arr[mid]<arr[arr.length-1]){
-                return mid;
+            if (arr[s] == arr[mid] && arr[mid] == arr[e]) {
+                s++;
+                e--;
             }
-            
-            if (mid!=0&&(arr[mid-1]>arr[mid])&&arr[mid+1]>arr[mid]){
-                return mid;
-            }if (mid<arr.length-1) {
-                if (arr[mid] > arr[mid + 1]) {
-                    s = mid;
+            if (mid>0 && mid< arr.length-1){
+                if (arr[mid]<arr[mid+1] && (arr[0]<=arr[mid]&&arr[mid]<arr[n])){
+                    s=mid+1;
                 }
-            }
-            if (mid>0){
-                if (arr[mid] > arr[mid - 1]) {
-                    e= mid;
+                else if (arr[mid]>arr[mid+1]){
+
                 }
-            }
-                if ((mid>0)&&mid<arr.length-1)
-                 if ((arr[mid]==arr[mid+1])&&arr[mid]==arr[mid-1]){
-                    if (arr[arr.length-1]==arr[mid]){
-                        e=mid;
-                    }else if (arr[0]==arr[mid]){
-                        s=s+1;
+                else if (arr[mid]==arr[mid+1]){
+                    while (mid<n &&arr[mid]==arr[mid+1]){
+                        mid++;
+                    }
+                    s=mid;
+                }
+            }else {
+                if (mid== arr.length-1){
+                    if (arr[mid]>arr[0]){
+                        return mid;
+                    }else {
+                        return 0;
+                    }
+                }else {
+                    if (arr[mid]<arr[arr.length-1]){
+                        return arr.length-1;
+                    }else {
+                        return mid;
                     }
                 }
-
-
-        }return mid;
+            }
+        }
+        return s;
     }
 
 }

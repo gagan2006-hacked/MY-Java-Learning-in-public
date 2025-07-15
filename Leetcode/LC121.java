@@ -28,23 +28,37 @@ public class LC121 {
         }
         return profit;
     }*/
+
     public static int maxProfit(int[] prices) {
-        int minPrice = prices[0];
-        int maxProfit = 0;
-
-        for (int i = 1; i < prices.length; i++) {
-            int profit = prices[i] - minPrice;
-            maxProfit = Math.max(maxProfit, profit);
-            minPrice = Math.min(minPrice, prices[i]);
+        if (prices.length==1){
+            return 0;
         }
-
-        return maxProfit;
+        int min=prices[0];
+        int max=-1;
+        int profit =0;
+//        boolean flag=false;
+        for (int i = 1; i <prices.length; i++) {
+            if (max<prices[i]){
+                max=prices[i];
+                if (profit< max-min) {
+                    profit = max - min;
+                }
+            }
+            if (min>prices[i]){
+                min=prices[i];
+                max=-1;
+            }
+        }
+        if (profit>0){
+            return profit;
+        }
+        return 0;
     }
 
 
 
     public static void main(String[] args) {
 
-        System.out.println(maxProfit(new int[]{7,1,5,3,6,4}));
+        System.out.println(maxProfit(new int[]{3,2,6,5,0,3}));
     }
 }

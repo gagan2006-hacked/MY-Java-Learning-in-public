@@ -1,8 +1,5 @@
 package com.company;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Assignments {
 
@@ -1321,16 +1318,97 @@ private static int pro(int...arr) {
         System.out.println(demo.countZeroS(10010));
         int []arr=new int[20];
 */
-        int []arr=new int[6];
+        /*int []arr=new int[6];
         for (int i = 0; i <arr.length ; i++) {
             arr[i]= arr.length-i;
         }
 //        Arrays.sort(arr);
         MergeSortUser.mergesortOP(arr,0,arr.length-1);
         System.out.println(Arrays.toString(arr));
-
+*
+         */
+/*        printPattern(in.nextInt());
+      System.out.println(gcd(36,60));
+        separator("hello World ");*/
 
     }
+    /*private static void separator(String og){
+       og=og.trim();
+       og =og.toLowerCase();
+        HashSet<Character>vowel=new HashSet<>();
+        vowel.add('a');
+        vowel.add('e');
+        vowel.add('i');
+        vowel.add('o');
+        vowel.add('u');
+        int vowelCount=0;
+        int consonantsCount=0;
+        String v="{";
+        String c="{";
+        for (int i = 0; i <og.length(); i++) {
+            char ch=og.charAt(i);
+            if (!Character.isLetter(ch)) continue;
+            if (vowel.contains(ch)){
+                vowelCount++;
+                v+=ch+" ";
+            }else {
+                consonantsCount++;
+                c+=ch+" ";
+            }
+        }
+        v+='}';
+        c+="}";
+        System.out.println(" these are vowel in the string "+v+" this is the count of them "+vowelCount);
+        System.out.println(" these are consonants in the string "+c+" this is the count of them "+consonantsCount);
+    }*/
+
+/*    public static int gcdMY(int n,int n1){
+        if (n==n1){
+            return n;
+        }
+        if (n>n1){
+            if (n1==0){
+                return n;
+            }
+            return gcdMY(n1,n%n1);
+        }else {
+            if (n==0){
+                return n1;
+            }return gcdMY(n1%n,n);
+        }
+    }*/
+/*    public static int gcd(int a, int b) {
+        return b == 0 ? a : gcd(b, a % b);
+    }
+
+    public static int lcm(int a,int b){
+        int gcd=gcd(a,b);
+        return (a*b)/gcd;
+    }
+    */
+    /*
+        *
+       ***
+      *****
+     *******
+    *********
+    */
+    public static void printPattern(int n){
+        for (int i = 0; i <n; i++) {
+            int space=n-1-i;
+            for (int k = 0; k <space; k++) {
+                System.out.print(" ");
+            }
+            int stars=(2*i)+1;
+            for (int j = 0; j <stars; j++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+    }
+
+
+
    /* public static boolean isPrime(int n){
         if (n<=3 && n>=2) return true;
         if ((n&1)==0)return false;
