@@ -1,5 +1,8 @@
 package com.Leetcode;
 
+import java.util.Arrays;
+import java.util.HashSet;
+
 public class LC11 {
     public static int maxArea(int[] height) {
         int s=0;
