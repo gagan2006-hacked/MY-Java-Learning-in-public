@@ -1331,6 +1331,10 @@ private static int pro(int...arr) {
       System.out.println(gcd(36,60));
         separator("hello World ");*/
 
+//        100184
+
+        System.out.println("tea".hashCode());
+
     }
     /*private static void separator(String og){
        og=og.trim();

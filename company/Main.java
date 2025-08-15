@@ -1,19 +1,34 @@
+package com.company;
 
+import java.math.BigInteger;
 import java.util.Scanner;
 public class Main {
-    private static System system ;
 
-    public static void main(String[] args) {
-        Scanner sc=new Scanner(system.in);
-        System.out.println("enter the monthly salary");
-        int sl= sc.nextInt();
-        if (sl>=10000){
-            sl = sl +2000;
-        }else {
-            sl =sl +1000;
-
+    public static void main(String[] args) throws Exception {
+        /*CusHashSet<Integer>set=new CusHashSet<>(10);
+        set.insert(11);
+        set.insert(144);
+        set.insert(12);
+        set.insert(111);
+        set.insert(21);
+        set.insert(1);
+        System.out.println(set);*/
+        long n=64;
+        BigInteger big=new BigInteger(""+n);
+        int bit=big.bitLength();
+        int count=0;
+        /*System.out.println(Integer.toBinaryString((int) n));
+        System.out.println(Integer.toBinaryString((int) (n>>1)));*/
+        while (bit!=0){
+            if ((n&1)==1){
+                count++;
+            }
+            if (count>1){
+                break;
+            }
+            n=n>>1;
+            bit--;
         }
-        System.out.print("ur total salary is ");
-        System.out.print(sl);
+        System.out.println(count==1);
     }
 }

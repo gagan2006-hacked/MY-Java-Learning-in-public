@@ -1,7 +1,6 @@
 package com.Leetcode;
 
-import java.util.HashMap;
-import java.util.Objects;
+import java.util.*;
 
 public class LC1 {
     public int[] twoSum(int[] arr, int target) {
@@ -14,6 +13,10 @@ public class LC1 {
             set.put(arr[i],i);
         }
         return new int[]{-1,-1};
+    }
+
+    public static void main(String[] args) {
+
     }
 
 }

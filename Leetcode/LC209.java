@@ -7,27 +7,27 @@ public class LC209 {
         System.out.println(minSubArrayLen(7,arr));
     }
     public static int minSubArrayLen(int target, int[] arr) {
-        int n = arr.length;
-        int total=Integer.MAX_VALUE;
-        int len=total;
-        int sum=0;
+        if (arr.length==1){
+            return (arr[0]==target)? arr.length:0;
+        }
+        int length=0;
         int s=0;
-        int end=0;
-        while (s<=end&&end<n){
-            if (sum+arr[end]>target){
-                len=Math.min(end-s,len);
+        int e=0;
+        int sum=arr[s];
+        while (e<arr.length){
+            if (sum>=target){
+                length=Math.min(length,(e-s+1));
                 sum=sum-arr[s];
                 s++;
-            }
-            if (sum+arr[end]<=target){
-                sum+=arr[end];
-                end++;
+//                length=Math.min(length,(e-s+1));
+            }else {
+                e++;
+                if (e<arr.length) {
+                    sum += arr[e];
+                }
             }
         }
-        if (sum<target){
-            len=0;
-        }
-        return len;
+        return length;
     }
 
     // Binary search to find the largest index where prefixSum[i] <= required
