@@ -1,0 +1,81 @@
+import java.util.*;
+public class Cal {
+    char op='+';
+    public Cal(char op){
+        this.op=op;
+    }
+    public Cal(){
+        System.out.println(" by default the operatio is +");
+    }
+    public  double cal(double ...arr){
+        int i=0;
+        switch(op){
+            case '+':
+                return add(arr);
+            case '-':
+                return sub(arr);
+            case '*':
+                return mul(arr);
+            case '/':
+                return div(arr);
+            default:
+                System.out.println(" our cal provide only +,-,*,/,% ");
+        }
+        return -1;
+        
+    }
+    double add(double []arr){
+        double s=0;
+        for(double ele:arr){
+            s+=ele;
+        }
+        return s;
+    }
+    double sub(double []arr){
+        double s=0;
+        for (double ele:arr){
+            s-=ele;
+        }
+        return s;
+    }
+    double mul(double []arr){
+        double s=1;
+        for (double ele:arr){
+            s*=ele;
+        }
+        return s;
+    }
+    double div(double []arr){
+        double s=1;
+        for (double ele:arr){
+            if(ele==0){
+              System.out.println("error div by 0");
+                break;
+            }
+            s/=ele;
+        }
+        return s;
+    }
+    void decoder(String s){
+        
+        
+        
+        
+    }
+ 
+    public static void main(String args[]) {
+        // TODO code application logic here
+       Cal c=new Cal();
+       Scanner in =new Scanner(System.in);
+       char re='y';
+       System.out.println("enter the input like this ( 2+3-97 )  noi space ");
+       while(re=='y')
+       {
+       String s=in.next().replaceAll("\\s","");
+       c.decoder(s);
+       System.out.println("enter the y to continue or n to exit");
+       re=in.next().toLowerCase().charAt(0);
+       }
+       
+    }
+}
