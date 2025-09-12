@@ -1333,7 +1333,8 @@ private static int pro(int...arr) {
 
 //        100184
 
-        System.out.println("tea".hashCode());
+//        System.out.println("tea".hashCode());
+//        System.out.println((char) ());
 
     }
     /*private static void separator(String og){

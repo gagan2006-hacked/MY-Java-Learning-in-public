@@ -35,4 +35,18 @@ public class WordChecker {
             }
         }
     }
+    private static HashSet<String> permutation(String[]arr,int place,int size,String s){
+        if (arr.length==0){
+            HashSet<String> set=new HashSet<>();
+            set.add(s);
+            return set;
+        }
+        HashSet<String>set=new HashSet<>();
+        for (int i = 0; i<place; i++) {
+            String f=s.substring(0,size*i);
+            String b=s.substring(size*i);
+            set.addAll(permutation(Arrays.copyOfRange(arr,1,arr.length),place+1,size,f+arr[0]+b));
+        }
+        return set;
+    }
 }
