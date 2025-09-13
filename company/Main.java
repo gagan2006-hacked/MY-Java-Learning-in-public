@@ -4,6 +4,7 @@ import com.Project.MorseCodeTranslate;
 
 import java.math.BigInteger;
 import java.util.Locale;
+import java.util.Random;
 import java.util.Scanner;
 public class Main {
 
@@ -33,7 +34,7 @@ public class Main {
             bit--;
         }
         System.out.println(count==1);*/
-        MorseCodeTranslate translate=new MorseCodeTranslate();
+        /*MorseCodeTranslate translate=new MorseCodeTranslate();
         System.out.println("Welcome to morse code Decoder and Encoder");
         Scanner in=new Scanner(System.in);
         char ch='y';
@@ -56,6 +57,8 @@ public class Main {
             System.out.println("Do you want to continue (y/n)");
             ch=in.next().toLowerCase().charAt(0);
             in.nextLine();
-        }
+        }*/
+        int r=new Random().nextInt(0,2);
+        System.out.println(r);
     }
 }
