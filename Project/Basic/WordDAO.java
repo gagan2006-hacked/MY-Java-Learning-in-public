@@ -9,8 +9,8 @@ import java.util.List;
 
 public class WordDAO {
     private static final String URL = "jdbc:mysql://localhost:3306/words";
-    private  String USER = "_0:1!|?>|?>|%#3$|";
-    private  String PASSWORD = "65%4|1/12|65%4|1/12|&9$<|S64|N8|N6|N6|N7|&34^~|)99&|~12#|198&5%|@12$9&|1/12|";
+    private  String USER = "";
+    private  String PASSWORD = "";
 
 
     private Connection getConnection() throws SQLException {
