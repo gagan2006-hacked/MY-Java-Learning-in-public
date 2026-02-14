@@ -90,7 +90,7 @@ public class Queens {
                 board[row][col]=false;
             }
         }
-return count;
+        return count;
     }
 
 

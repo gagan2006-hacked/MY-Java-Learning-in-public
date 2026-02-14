@@ -1,7 +1,10 @@
 package com.company;
+import com.Leetcode.LC9;
+
 import java.util.*;
 
 public class Assignments {
+
 
 
     private static void fib_usr(int n) {
@@ -1336,6 +1339,48 @@ private static int pro(int...arr) {
 //        System.out.println("tea".hashCode());
 //        System.out.println((char) ());
 
+        /*System.out.println("enter the n");
+        int n=in.nextInt();
+        int[][] a = new int[n][n];
+
+        int x = n / 2;    // start at center
+        int y = n / 2;
+        int num = 1;
+        a[x][y] = num++;  // put 1 in center
+
+        int step = 1;
+
+        while (num <= n * n) {
+            // move right
+            for (int i = 0; i < step && num <= n*n; i++) a[x][++y] = num++;
+            // move up
+            for (int i = 0; i < step && num <= n*n; i++) a[++x][y] = num++;
+
+
+            step++;
+
+            // move left
+            for (int i = 0; i < step && num <= n*n; i++) a[x][--y] = num++;
+            // move down
+            for (int i = 0; i < step && num <= n*n; i++) a[--x][y] = num++;
+
+            step++;
+        }
+
+        // print
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                System.out.print(a[i][j] + " ");
+            }
+            System.out.println();
+        }*/
+//        7 8 9
+//        6 1 2
+//        5 4 3
+
+        System.out.println((int) 'a');
+        System.out.println((int) 'z');
+
     }
     /*private static void separator(String og){
        og=og.trim();
@@ -1440,6 +1485,3 @@ private static int pro(int...arr) {
         return image;
     }
 }*/
-
-
-

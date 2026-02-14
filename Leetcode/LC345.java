@@ -1,5 +1,6 @@
 package com.Leetcode;
 
+import java.util.Arrays;
 import java.util.HashSet;
 
 public class LC345 {
@@ -8,16 +9,11 @@ public class LC345 {
             return s;
         }
         int st=0,end =s.length()-1;
-        HashSet<Character>set=new HashSet<>();
-        set.add('a');
-        set.add('e');
-        set.add('i');
-        set.add('o');
-        set.add('u');
+        HashSet<Character> set = new HashSet<>(Arrays.asList('a','e','i','o','u','A','E','I','O','U'));
         char []arr=s.toCharArray();
         while (st<end){
-            char en=s.toLowerCase().charAt(end);
-            char sn=s.toLowerCase().charAt(st);
+            char en=s.charAt(end);
+            char sn=s.charAt(st);
             if (set.contains(sn) && set.contains(en)) {
                 char temp = arr[st];
                 arr[st] = arr[end];

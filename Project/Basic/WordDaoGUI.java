@@ -14,7 +14,7 @@ public class WordDaoGUI extends JFrame {
     private final WordDAO wordDAO;
 
     public WordDaoGUI() {
-        setTitle("Smart Word Suggestion (DAO)");
+        setTitle("Smart Word Suggestion ");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(500, 400);
         setLocationRelativeTo(null);
@@ -23,14 +23,14 @@ public class WordDaoGUI extends JFrame {
         wordDAO = new WordDAO();
 
         // Title label
-        JLabel label = new JLabel("Type to get suggestions:", SwingConstants.CENTER);
+        JLabel label = new JLabel("Type As You Wish ", SwingConstants.CENTER);
         label.setFont(new Font("Segoe UI", Font.BOLD, 16));
         add(label, BorderLayout.NORTH);
 
         // Input field
         inputField = new JTextField();
         inputField.setFont(new Font("Segoe UI", Font.PLAIN, 18));
-        inputField.setPreferredSize(new Dimension(200, 35));
+        inputField.setPreferredSize(new Dimension(250, 50));
         add(inputField, BorderLayout.CENTER);
 
         // Suggestion list

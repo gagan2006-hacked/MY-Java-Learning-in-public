@@ -43,4 +43,14 @@ class ListNode {
         }
         System.out.print("null");
     }
+    public String toString(){
+        StringBuilder builder=new StringBuilder();
+        ListNode node=this;
+        while (node!=null){
+            builder.append(node.val).append("->");
+            node=node.next;
+        }
+        builder.append("null");
+        return builder.toString();
+    }
 }

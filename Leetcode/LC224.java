@@ -1,56 +1,90 @@
 package com.Leetcode;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 public class LC224 {
     public static int calculate(String s) {
-        Stack<Integer> nums = new Stack<>();
-        Stack<Character> ops = new Stack<>();
+        Stack<Integer> stack = new Stack<>();
+        int result = 0;
         int num = 0;
-        int n = s.length();
-        int sign = 1;
-        nums.push(0); // Handle leading '-'
-
-        for (int i = 0; i < n; i++) {
+        int sign = 1; // 1 means '+', -1 means '-'
+        s=s.replaceAll("\\s","");
+        for (int i = 0; i < s.length(); i++) {
             char ch = s.charAt(i);
+
             if (Character.isDigit(ch)) {
                 num = num * 10 + (ch - '0');
-            } else if (ch == '+' || ch == '-') {
-                nums.push(sign * num);
+            } else if (ch == '+') {
+                result += sign * num;
                 num = 0;
-                sign = (ch == '+') ? 1 : -1;
+                sign = 1;
+            } else if (ch == '-') {
+                result += sign * num;
+                num = 0;
+                sign = -1;
             } else if (ch == '(') {
-                nums.push(sign);
-                ops.push('(');
+                // Push the current result and sign onto the stack
+                stack.push(result);
+                stack.push(sign);
+                // Reset for the new sub-expression
+                result = 0;
                 sign = 1;
             } else if (ch == ')') {
-                nums.push(sign * num);
+                result += sign * num;
                 num = 0;
-                int sum = 0;
-                while (!ops.isEmpty() && ops.peek() != '(') {
-                    sum += nums.pop();
-                    ops.pop();
-                }
-                if (!ops.isEmpty() && ops.peek() == '(') {
-                    ops.pop();
-                    sum *= nums.pop(); // multiply with sign before '('
-                }
-                nums.push(sum);
+                result *= stack.pop(); // Pop the sign before '('
+                result += stack.pop(); // Pop the result before '('
             }
         }
 
-        nums.push(sign * num);
+        // Add the last number
+        result += sign * num;
 
-        int result = 0;
-        while (!nums.isEmpty()) {
-            result += nums.pop();
-        }
         return result;
     }
 
+
+   /* public static int calculate(String s) {
+        s=s.replaceAll("\\s","");
+        StringBuilder post=new StringBuilder(postfix(s));
+//        System.out.println(post);
+        List<Integer> list=new ArrayList<>();
+        String []arr=post.toString().split("\\|");
+        return 0;
+    }
+    private static String postfix(String s){
+        Stack<Character> stack=new Stack<>();
+        StringBuilder builder=new StringBuilder();
+        for (char ch:s.toCharArray()){
+            if (ch=='('||ch==')'){
+                continue;
+            }
+            if (ch=='+'||ch=='-'){
+                builder.append("|");
+                if (stack.isEmpty()){
+                    stack.push(ch);
+                }else {
+                    builder.append("|");
+                    builder.append(stack.pop());
+                    stack.push(ch);
+                }
+            }else {
+                builder.append(ch);
+            }
+        }
+        if (!stack.isEmpty()){
+            while (!stack.isEmpty()){
+                builder.append("|");
+                builder.append(stack.pop());
+            }
+        }
+        return builder.toString();
+    }*/
+
     public static void main(String[] args) {
-        System.out.println(calculate("5+(899*32+4893)*23/432")); // Output: 6
+        System.out.println(calculate(" (1 + (2 - (3 + (4 - (5 + 6)))) + 7) ")); // Output: 6
     }
 }
-
 //

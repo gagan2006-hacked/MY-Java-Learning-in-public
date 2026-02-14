@@ -5,102 +5,105 @@ import java.util.Random;
 
 
 public class TicTacToe {
-    public static void main(String[] args) {
-        boolean[][]booleans=new boolean[3][3];
-//        ticTac(booleans,0,0,true);
+    public char[][] grid;
+    public String playerX = "Player X";
+    public String playerO = "Player O";
+    public String won = "";
+
+    public TicTacToe() {
+        grid = new char[3][3];
+        setupGrid();
     }
-    //solving for x user
-    /*public static void ticTac(boolean [][]board,int row,int col,boolean user,Random random){
-        if (row>board.length-1){
-            for (boolean[] b:board){
-                System.out.println(Arrays.toString(b));
+
+    public TicTacToe(char[][] grid) {
+        this.grid = grid;
+        setupGrid();
+    }
+
+    public TicTacToe(String playerX, String playerO) {
+        grid = new char[3][3];
+        setupGrid();
+        this.playerX = playerX;
+        this.playerO = playerO;
+    }
+
+    public TicTacToe(char[][] grid, String playerX, String playerO) {
+        this.grid = grid;
+        this.playerX = playerX;
+        this.playerO = playerO;
+        setupGrid();
+    }
+
+    private void setupGrid() {
+        for (char[] row : grid) {
+            Arrays.fill(row, ' ');
+        }
+    }
+
+    public void outPR() {
+        setupGrid();
+        won = "";
+    }
+
+    public boolean won(int moves) {
+        char c = checkWin(moves);
+        if (c == 'x' || c == 'o') {
+            if (c == 'x') {
+                won = playerX;
+            } else {
+                won = playerO;
             }
-            System.out.println();
-            return;
         }
-        if (col>board.length-1){
-            ticTac(board,row+1,0,user);
-            return;
-        }
-        if (ticTacSolved(board,row,col)) {
-            return;
-        }
-        row=random.nextInt(0,board.length);
-
+        return c == 'x' || c == 'o';
     }
 
-    private static boolean ticTacSolved(boolean[][] board, int row, int col) {
-        if (row>=0 && row<board.length && col>=0 && col<board.length){
-            if (solvedThroughrow(board,row,col) || solvedThroughcol(board,row,col) || solvedThroughtDiagonal(board,row,col)){
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private static boolean solvedThroughtDiagonal(boolean[][] board, int row, int col) {
-//        if in (0,0)
-        if (row==0 && col==0){
-            return checkDiagonalUpper(board,row,col);
-        }
-//        if in (2,0)
-        if (row==board.length-1 && col==0){
-            return checkDiagonalLower(board,row,col);
-        }
-//        if in (2,2)
-        if (row==board.length-1 && col==board.length-1){
-            return checkDiagonalUpper(board,0,0);
-        }
-        return false;
-    }
-
-    private static boolean checkDiagonalLower(boolean[][] board, int row, int col) {
-        if (row==0 || col==board.length-1){
-            return true;
-        }if (board[row][col]){
-            return checkDiagonalLower(board,row-1,col+1);
-        }
-        return false;
-    }
-
-    private static boolean checkDiagonalUpper(boolean[][] board, int row, int col) {
-        if (row==board.length || col==board.length){
-            return true;
-        }
-        if (board[row][col]){
-            return checkDiagonalUpper(board,row+1,col+1);
-        }
-        return false;
-    }
-
-    private static boolean solvedThroughcol(boolean[][] board, int row, int col) {
-        boolean colCheck =false;
-        if (row>=0 && row<board.length && col>=0 && col<board.length){
-            for (int i = 0; i <board.length ; i++) {
-                if (board[i][col]){
-                    colCheck =true;
-                    continue;
-                }else {
-                    return false;
+    public char checkWin(int fill) {
+        if (fill < 5) return 'C'; // no win possible yet
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid.length; j++) {
+                if (grid[i][j] != ' ') {
+                    char p = isWin(i, j, grid[i][j]);
+                    if (p == 'x' || p == 'o') return p;
                 }
             }
         }
-        return colCheck;
+        return 'C';
     }
 
-    private static boolean solvedThroughrow(boolean[][] board, int row, int col) {
-        boolean rowCheck=false;
-        if (row>=0 && row<board.length && col>=0 && col<board.length){
-            for (int i = 0; i <board.length; i++) {
-                if (board[row][i]){
-                    rowCheck=true;
-                    continue;
-                }else {
-                    return false;
-                }
-            }
+    private char isWin(int row, int col, char pl) {
+        if (checkInRow(row, pl) || checkInCol(col, pl) || checkInDia(row, col, pl)) {
+            return pl;
         }
-        return rowCheck;
-    }*/
+        return 'C';
+    }
 
+    private boolean checkInDia(int row, int col, char pl) {
+        if (row == 0 && col == 0 || row == 1 && col == 1 || row == 2 && col == 2) {
+            for (int i = 0; i < 3; i++) {
+                if (grid[i][i] != pl) return false;
+            }
+            return true;
+        }
+        if (row + col == 2) {
+            for (int i = 0; i < 3; i++) {
+                if (grid[i][2 - i] != pl) return false;
+            }
+            return true;
+        }
+        return false;
+    }
+
+    private boolean checkInCol(int col, char pl) {
+        for (int i = 0; i < 3; i++) {
+            if (grid[i][col] != pl) return false;
+        }
+        return true;
+    }
+
+    private boolean checkInRow(int row, char pl) {
+        for (int i = 0; i < 3; i++) {
+            if (grid[row][i] != pl) return false;
+        }
+        return true;
+    }
 }

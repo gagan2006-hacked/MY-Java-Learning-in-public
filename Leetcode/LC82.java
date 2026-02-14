@@ -2,10 +2,7 @@ package com.Leetcode;
 
 import javax.print.attribute.HashAttributeSet;
 import java.sql.ClientInfoStatus;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 public class LC82 {
    /* public ListNode deleteDuplicates(ListNode head) {
@@ -34,22 +31,23 @@ public class LC82 {
        if (head==null||head.next==null){
            return head;
        }
-       HashSet<Integer>set=new HashSet<>();
-       String s="";
-       while (head!=null){
-           int val=head.val;
-           if (set.contains(val)){
-               s+=val;
+       HashSet<Integer> set=new HashSet<>();
+       List<Integer> dul=new ArrayList<>();
+       ListNode node=head;
+       while (node!=null){
+           if (set.contains(node.val)){
+               dul.add(node.val);
+           }else {
+               set.add(node.val);
            }
-           else {
-               set.add(val);
-           }
-           head=head.next;
+           node=node.next;
        }
-       for (char c:s.toCharArray()){
-           set.remove(c-'0');
+       List<Integer>list=new ArrayList<>(set.stream().toList());
+       list.removeAll(new HashSet<>(dul));
+       int []arr=new int[list.size()];
+       for (int i = 0; i <list.size(); i++) {
+           arr[i]=list.get(i);
        }
-       int []arr=set.stream().mapToInt(Integer::intValue).toArray();
        Arrays.sort(arr);
        return nodeFormation(arr,0);
    }

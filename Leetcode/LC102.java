@@ -56,5 +56,17 @@ class TreeNode {
           this.left = left;
           this.right = right;
       }
-
-  }
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(val);
+        if (left != null || right != null) {
+            sb.append("(L: ")
+                    .append(left != null ? left.toString() : "null")
+                    .append(", R:")
+                    .append(right != null ? right.toString() : "null")
+                    .append(")");
+        }
+        return sb.toString();
+    }
+}

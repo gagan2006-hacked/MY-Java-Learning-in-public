@@ -21,7 +21,7 @@ public class EncryptionV1 {
         objToSymbol.put('f', "1/:9");  objToSymbol.put('F', "98>76");
         objToSymbol.put('g', "65%4");  objToSymbol.put('G', "1@45");
         objToSymbol.put('h', "198&5%");objToSymbol.put('H', "%3#4");
-        objToSymbol.put('i', ")99&");  objToSymbol.put('I', "(8&6");
+        objToSymbol.put('i', "99&");  objToSymbol.put('I', "8&6");
         objToSymbol.put('j', "}4^");   objToSymbol.put('J', ":1}>");
         objToSymbol.put('k', "->7&");  objToSymbol.put('K', "6}9*");
         objToSymbol.put('l', "1:&}");  objToSymbol.put('L', ":[&6");
@@ -38,7 +38,7 @@ public class EncryptionV1 {
         objToSymbol.put('w', "@12$9&");objToSymbol.put('W', ":0:^5");
         objToSymbol.put('x', "1@98>"); objToSymbol.put('X', "#123%");
         objToSymbol.put('y', "^56*3"); objToSymbol.put('Y', "$23-^");
-        objToSymbol.put('z', "7-(&$"); objToSymbol.put('Z', "%~!34");
+        objToSymbol.put('z', "7-&$"); objToSymbol.put('Z', "%~!34");
 
         // Numbers (must be unique!)
         objToSymbol.put('0', "N6");
@@ -66,7 +66,8 @@ public class EncryptionV1 {
 
     // Encryption using '|' as a separator (safe and uniform)
     public String encrypt(String s) {
-        if (s == null || s.isBlank()) return s;
+        if (s == null) return null;
+        if (s.isEmpty()) return "";
         StringBuilder b = new StringBuilder();
         for (char ch : s.toCharArray()) {
             String encoded = objToSymbol.getOrDefault(ch, "U" + ((int) ch));
@@ -77,7 +78,8 @@ public class EncryptionV1 {
 
     // Decrypt safely
     public String decrypt(String s) {
-        if (s == null || s.isBlank()) return s;
+        if (s == null) return null;
+        if (s.isEmpty()) return "";
         StringBuilder b = new StringBuilder();
         String[] tokens = s.split("\\|");
         for (String token : tokens) {
@@ -106,12 +108,5 @@ public class EncryptionV1 {
     }
 
     public static void main(String[] args) {
-        EncryptionV1 v=new EncryptionV1();
-        String e=v.encrypt("root");
-        String s=v.encrypt("gagan@2006vishwa");
-        System.out.println(e);
-        System.out.println(s);
-        System.out.println(v.decrypt(e));
-        System.out.println(v.decrypt(s));
     }
 }

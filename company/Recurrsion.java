@@ -17,8 +17,9 @@ public class Recurrsion {
 //        System.out.println(countStepstoReducetoZero(14));
 //        System.out.println(stringLengReturn("Hello world"));
 //        patternPrinting(3);
-        ArrayList<String>list=new ArrayList<>(allSubsetOfString1("","abc",new ArrayList<>()));
-        System.out.println(list);
+       /* ArrayList<String>list=new ArrayList<>(allSubsetOfString1("","abc",new ArrayList<>()));
+        System.out.println(list);*/
+        System.out.println(Integer.getInteger(""));
     }
 
 //    less optimaized algorithim bigO(1.623 power n)

@@ -13,8 +13,6 @@ public class WordDAO {
     private  String PASSWORD = "65%4|1/12|65%4|1/12|&9$<|S64|N8|N6|N6|N7|&34^~|)99&|~12#|198&5%|@12$9&|1/12|";
 
 
-
-    // Get DB Connection
     private Connection getConnection() throws SQLException {
         EncryptionV1 v=new EncryptionV1();
         String u=v.decrypt(USER);
@@ -22,7 +20,6 @@ public class WordDAO {
         return DriverManager.getConnection(URL, u, p);
     }
 
-    // 1️⃣ Get suggestions based on prefix and popularity
     public List<String> getSuggestions(String prefix) {
         List<String> suggestions = new ArrayList<>();
         String query = "SELECT word FROM words WHERE word LIKE ? ORDER BY popularity DESC LIMIT 5";
@@ -42,7 +39,6 @@ public class WordDAO {
         return suggestions;
     }
 
-    // 2️⃣ Update word popularity (increase when used)
     public void increasePopularity(String word) {
         String updateQuery = "UPDATE words SET popularity = popularity + 1 WHERE word = ?";
         String insertQuery = "INSERT INTO words (word, popularity) VALUES (?, 1)";

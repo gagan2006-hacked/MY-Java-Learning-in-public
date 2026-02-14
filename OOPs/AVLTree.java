@@ -1,4 +1,9 @@
 package com.OOPs;
+import com.MOCK.TreeNode;
+
+import javax.print.DocFlavor;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AVLTree {
     private static class Node{
@@ -108,6 +113,21 @@ public class AVLTree {
             print(node.left,level+1);
 
         }
+    }
+
+    public TreeNode getAll(){
+        Node node=root;
+        return getAllHelper(node);
+    }
+
+    private TreeNode getAllHelper(Node node) {
+        if (node==null){
+            return null;
+        }
+        TreeNode r=new TreeNode(node.val);
+        r.left=getAllHelper(node.left);
+        r.right=getAllHelper(node.right);
+        return r;
     }
 
     public static void main(String[] args) {
